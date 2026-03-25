@@ -22,12 +22,20 @@ public abstract class CuentaBancaria {
     }
 
     public void ingresar(double cantidad) {
-
+    	if(cantidad < 0) {
+    		throw new IllegalArgumentException("No puedes ingresar cantidades negativas");
+    	}
         saldo += cantidad;
     }
 
     public void reintegrar(double cantidad) {
-
+    	if(cantidad < 0) {
+    		throw new IllegalArgumentException("No puedes retirar cantidades negativas");
+    	}
+    	if(cantidad > saldo) {
+    		throw new IllegalArgumentException("No puedes retirar más dinero del que tienes");
+    	}
+    	
         saldo -= cantidad;
     }
     
